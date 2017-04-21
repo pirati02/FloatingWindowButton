@@ -1,0 +1,124 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/root_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/collapse_view"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@drawable/round_layout"
+            android:orientation="vertical">
+
+            <!--Icon of floating widget -->
+            <com.dev.baqari.floating_window_button.AudiVisualizerView
+                android:id="@+id/audio_visualizer"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="5dp" />
+
+            <!--Close button-->
+            <ImageView
+                android:id="@+id/close_btn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="40dp"
+                android:src="@drawable/ic_cancel"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/expanded_container"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:background="#F8BBD0"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gramaphone" />
+
+            <RelativeLayout
+                android:id="@+id/music_floating_view_open_close_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <ImageView
+                    android:id="@+id/close_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_cancel" />
+
+                <ImageView
+                    android:id="@+id/open_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/ic_cast" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/music_floating_view_song_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/music_floating_view_open_close_action"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Sabatoni"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/music_floating_view_song_name"
+                android:layout_toLeftOf="@id/music_floating_view_open_close_action"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/prev_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_previous_music"
+                    tools:ignore="ContentDescription" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/play_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_play"
+                    tools:ignore="ContentDescription" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/next_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_next_music"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>
