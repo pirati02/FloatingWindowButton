@@ -49,13 +49,9 @@ public class AudiVisualizerView extends View {
         if (isLoadingToStop) {
             lower = getLower() - 5;
 
-            canvas.drawRect(40, lower, 43, maxHeight, paint);
-            canvas.drawRect(45, lower, 48, maxHeight, paint);
-            canvas.drawRect(50, lower, 53, maxHeight, paint);
-            canvas.drawRect(55, lower, 58, maxHeight, paint);
-            canvas.drawRect(60, lower, 63, maxHeight, paint);
-            canvas.drawRect(65, lower, 68, maxHeight, paint);
-            canvas.drawRect(70, lower, 73, maxHeight, paint);
+            for (int i = 0; i < 49; i += 7) {
+                canvas.drawRect(40 + i, lower, 44 + i, maxHeight, paint);
+            }
 
             isLoadedToStop = true;
             isLoadingToStop = false;
@@ -63,13 +59,9 @@ public class AudiVisualizerView extends View {
         } else if (isLoadedToStop) {
             lower += 2;
             if (lower > 0) {
-                canvas.drawRect(40, lower, 43, maxHeight, paint);
-                canvas.drawRect(45, lower, 48, maxHeight, paint);
-                canvas.drawRect(50, lower, 53, maxHeight, paint);
-                canvas.drawRect(55, lower, 58, maxHeight, paint);
-                canvas.drawRect(60, lower, 63, maxHeight, paint);
-                canvas.drawRect(65, lower, 68, maxHeight, paint);
-                canvas.drawRect(70, lower, 73, maxHeight, paint);
+                for (int i = 0; i < 49; i += 7) {
+                    canvas.drawRect(40 + i, lower, 44 + i, maxHeight, paint);
+                }
 
                 timerStopDrawing = new Timer();
                 timerStopDrawing.schedule(new TimerTask() {
@@ -86,21 +78,13 @@ public class AudiVisualizerView extends View {
             }
         } else {
             int maxRandomable = maxHeight - 20;
-            itemsLastHeight[0] = random.nextInt(maxRandomable) + 20;
-            itemsLastHeight[1] = random.nextInt(maxRandomable) + 20;
-            itemsLastHeight[2] = random.nextInt(maxRandomable) + 20;
-            itemsLastHeight[3] = random.nextInt(maxRandomable) + 20;
-            itemsLastHeight[4] = random.nextInt(maxRandomable) + 20;
-            itemsLastHeight[5] = random.nextInt(maxRandomable) + 20;
-            itemsLastHeight[6] = random.nextInt(maxRandomable) + 20;
+            for (int i = 0; i < itemsLastHeight.length; i++) {
+                itemsLastHeight[i] = random.nextInt(maxRandomable) + 20;
+            }
 
-            canvas.drawRect(40, itemsLastHeight[0], 43, maxHeight, paint);
-            canvas.drawRect(45, itemsLastHeight[1], 48, maxHeight, paint);
-            canvas.drawRect(50, itemsLastHeight[2], 53, maxHeight, paint);
-            canvas.drawRect(55, itemsLastHeight[3], 58, maxHeight, paint);
-            canvas.drawRect(60, itemsLastHeight[4], 63, maxHeight, paint);
-            canvas.drawRect(65, itemsLastHeight[5], 68, maxHeight, paint);
-            canvas.drawRect(70, itemsLastHeight[6], 73, maxHeight, paint);
+            for (int i = 0; i < itemsLastHeight.length; i++) {
+                canvas.drawRect(40 + (i * 7), itemsLastHeight[i], 44 + (i * 7), maxHeight, paint);
+            }
 
             timerDrawing = new Timer();
             timerDrawing.schedule(new TimerTask() {
@@ -120,7 +104,6 @@ public class AudiVisualizerView extends View {
     };
 
     public void startLoading() {
-        timerStopDrawing.cancel();
         timerStopDrawing = null;
         isLoadedToStop = false;
         isLoadingToStop = false;
@@ -128,7 +111,6 @@ public class AudiVisualizerView extends View {
     }
 
     public void stopLoading() {
-        timerDrawing.cancel();
         timerDrawing = null;
         isLoadingToStop = true;
         isLoadedToStop = false;

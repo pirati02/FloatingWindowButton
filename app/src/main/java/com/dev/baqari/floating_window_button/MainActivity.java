@@ -11,17 +11,26 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     private static final int SYSTEM_ALERT_REQUEST_CODE = 252;
+    AudiVisualizerView visualizerView;
+    private static boolean isAnimating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        visualizerView = (AudiVisualizerView) findViewById(R.id.audio_visualizer);
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-
+               /* if(isAnimating){
+                    visualizerView.startLoading();
+                    isAnimating = false;
+                } else{
+                    visualizerView.stopLoading();
+                    isAnimating = true;
+                }*/
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
                     if (!Settings.canDrawOverlays(MainActivity.this)) {
                         Intent myIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
